@@ -5,6 +5,4 @@ solve :: String -> String
 solve = concatMap (show. length) . group . concat . words
 
 main :: IO ()
-main = do 
-    word <- getLine
-    putStrLn $ solve word
+main = getLine >>= (putStrLn . solve)
