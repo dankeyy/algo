@@ -1,4 +1,6 @@
-import Data.Foldable ( Foldable(foldl') )
+
+import Data.List ( foldl' )
+
 
 rev1 :: [a] -> [a]
 rev1 l = [l !! i | i <- [len - 1, len - 2 ..0]]
