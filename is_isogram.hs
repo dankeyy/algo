@@ -10,4 +10,4 @@ isogram1 x = length (Set.fromList s) == length s
 
 
 isogram2 :: String -> Bool
-isogram2 str = null $ map toLower str \\ ['a'..'z']
+isogram2 = null . (\\ ['a'..'z']) . map toLower
