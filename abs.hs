@@ -1,6 +1,8 @@
 
 import Data.Foldable ( Foldable(toList) )
 import Control.Monad
+
+import Control.Applicative
 -- implement abs
 
 abs1 :: [Int] -> [Int]
@@ -8,6 +10,9 @@ abs1 = map (\x -> x * signum x)
 
 abs1_5 :: [Int] -> [Int]
 abs1_5 = map (ap (*) signum)
+
+abs1_5_5 :: [Int] -> [Int]
+abs1_5_5 = map ((*) <*> signum)
 
 abs2 :: [Int] -> [Int]
 abs2 list = [x * signum x | x <- list]
