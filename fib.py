@@ -1,16 +1,16 @@
-from functools import lru_cache
+from functools import cache
 
-@lru_cache # if py3.9 can just use 'cache'
+@cache # /lru_cache
 def cfib(n): # classic recursive fib
-    if n <= 2: return 1
-    return cfib(n - 1) + cfib(n - 2)
+    return 1 if n <= 2 \
+         else cfib(n - 1) + cfib(n - 2)
 
 
 def rfib(n, d={}): # like classical but manually caching using a dict. because y not
     if n in d: return d[n]
     if n <= 2: return 1
 
-    d[n] = rfib(n - 1, d) + rfib(n - 2, d)
+    d[n] = rfib(n - 1) + rfib(n - 2)
     return d[n]
 
 
@@ -25,6 +25,6 @@ def ifib(n): # iteratively yields all fibs up to n (including). or returns the n
 
 
 if __name__ == '__main__':
-    print(ifib(100000000000))
-    # print(rfib(50))
+    # print(ifib(100000000000))
+    print(rfib(50))
     # print(ifib(50))
