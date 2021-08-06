@@ -11,9 +11,9 @@ fb1 :: IO ()
 fb1 = mapM_ putStrLn
   [
     max
-    (show x) 
-    (concat [fizzbuzz | (n, fizzbuzz) <- rules, x `divisibleBy` n])
-    | x <- [1..100]
+    (show n) 
+    (concat [fizzbuzz | (r, fizzbuzz) <- rules, n `divisibleBy` r])
+    | n <- [1..100]
   ]
 
 ----------------------------------------------------------------
@@ -22,7 +22,7 @@ fb2 :: Int -> String
 fb2 n = n <|> [ fizzbuzz | (r, fizzbuzz) <- rules, n `divisibleBy` r]
 
 
-main2 ::IO ()
+main2 :: IO ()
 main2 = mapM_ (putStrLn . fb2) [1..100]
 
 ----------------------------------------------------------------
