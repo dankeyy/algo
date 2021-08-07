@@ -22,8 +22,8 @@ fb1 =
     | n <- [1..]
   ]
 
-main13 :: IO ()
-main13 = mapM_ putStrLn $ take 100 fb1
+main13 :: [String] -> IO ()
+main13 fb = mapM_ putStrLn $ take 100 fb
 
 ----------------------------------------------------------------
 
