@@ -10,7 +10,7 @@ def fb1(n):
 
 def fb2(n):
     for i in islice(
-            (concat(*v) or i 
+            (concat(*v) or i
                 for i, v in enumerate(
                     zip(
                         cycle(("", "", "fizz")), 
@@ -18,7 +18,7 @@ def fb2(n):
                     ), 1
                 )
             ), n
-                ): print(i)
+    ): print(i)
 
 
 
