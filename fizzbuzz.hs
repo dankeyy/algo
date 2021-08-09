@@ -38,6 +38,8 @@ main2 = mapM_ (putStrLn . fb2) [1..100]
 
 fb3 :: [String]
 fb3 = zipWith3 (\n f b -> n <|> (f ++ b))
-              (map show [1..])
-              (cycle ["", "", "fizz"]) 
-              (cycle ["", "", "", "", "buzz"]) 
+               (map show [1..])
+               (cycle ["", "", "fizz"]) 
+               (cycle ["", "", "", "", "buzz"]) 
+
+----------------------------------------------------------------
