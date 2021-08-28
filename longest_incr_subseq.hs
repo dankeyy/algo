@@ -1,12 +1,11 @@
-
 import Data.List ( group )
 import Control.Arrow ( (&&&) )
 import Data.Bifunctor ( first )
 
+-- finding the longest subsequence of increasing & following elements in the list, returning the length of that subseq along with its first index
 
 adjacentPairings :: [a] -> [(a, a)]
 adjacentPairings = zip <*> tail
-
 
 subEq1 :: (Int, Int) -> Bool
 subEq1 = uncurry $ (==) . succ
@@ -24,15 +23,6 @@ longestTrue = go 0 (0, 0) . map (head &&& length) . group
 
 solve :: [Int] -> (Int, Int)
 solve = first succ . longestTrue . map subEq1. adjacentPairings
-
-
--- longestIncSubSeq :: [Int] -> (Int, Int)
--- longestIncSubSeq = go 0 (0,0)
---   where
---     go _ best [] = best
---     go idx best@(count, i) (x:y:xys)
---       | succ x == y = go (idx + ) (count, i) xls
---       | otherwise   = go (, idx)  xls
 
 
 main :: IO () 
