@@ -1,10 +1,10 @@
-characters = ('I', 'V', 'X', 'L', 'C', 'D', 'M')[::-1]
-numeric_value = (1,5,10,50,100,500,1000)[::-1]
-convert = {k:v for k, v in zip(numeric_value, characters)}
+characters    = ('M',  'D', 'C', 'L', 'X', 'V', 'I') 
+numeric_value = (1000, 500, 100,  50,  10,  5,   1 ) 
 
 def gimmenumber(n):
     i = 0
-    roman =''
+    roman = ''
+
     while n:
         for x in range(n // numeric_value[i]):
             roman += characters[i]
@@ -13,4 +13,4 @@ def gimmenumber(n):
 
     return roman
 
-print(gimmenumber(23))
+print(gimmenumber(12345))
