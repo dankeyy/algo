@@ -1,6 +1,7 @@
 
 from typing import List
-
+from operator import itemgetter
+import numpy as np
 
 def snail(m: List[List[int]]) -> List[int]:
     s = [] # sorted snail
@@ -21,6 +22,16 @@ def snail(m: List[List[int]]) -> List[int]:
     return s
 
 
+def np_snail(m):
+    snail = np.empty(0)
+
+    while m.size:
+        snail = np.concatenate((snail, m[:1]), axis=None)
+        m = np.rot90(m[1:])
+
+    return snail
+
+
 if __name__ == "__main__":
     x = [[1,2,3], [8, 9, 4], [7,6, 5]]
-    print(snail(x))
+    print(snail2(np.array(x)))
