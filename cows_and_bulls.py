@@ -1,6 +1,8 @@
 from random import sample
 from string import digits
 
+# https://en.wikipedia.org/wiki/Bulls_and_Cows
+
 def main():
     random_num = ''.join(sample(digits, 4))
     bulls = 0
