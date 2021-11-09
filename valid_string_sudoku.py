@@ -1,23 +1,23 @@
 from itertools import product
 
-def is_sudoku_correct(solved_sudoku: str):
-    """recieves an 81-character long string and determines if it represents a valid sudoku"""
+mul3 = ((3).__mul__)
 
-    grid = [solved_sudoku[i: i + 9] for i in range(0, len(solved_sudoku), 9)]
 
-    def valid_fields():
-        for i, row in enumerate(grid):
-            for j in range(len(row)):
-                current_row = set(row)
-                current_column = {grid[x][j] for x in range(len(grid))}
+def fields(s):
+    m = [s[i:i+9] for i in range(0, len(s), 9)]
 
-                x0 = (i // 3) * 3
-                y0 = (j // 3) * 3
-                current_square = {grid[x0 + x][y0 + y] for x, y in product(range(3), repeat=2)}
+    for i in range(9):
+        yield s[i :: 9] # columns # or- m[x][i] for x in range(len(grid))
+        yield m[i] # rows # or- yield s[i*9 : (i+1) * 9]
 
-                yield all(len(field) == 9 for field in (current_row, current_column, current_square))
+        x0, y0 = map(mul3, divmod(i, 3))
+        yield [m[x0+x][y0+y] for x, y in product(range(3), repeat=2)] # maybe as gen/ set comp instead idk
 
-    return all(valid_fields())
 
-# should print True
-print(is_sudoku_correct('864371259325849761971265843436192587198657432257483916689734125713528694542916378'))
+def valid_sudoku(s):
+    return all(len(set(f)) == 9 for f in fields(s))
+
+# valid board
+test = '864371259325849761971265843436192587198657432257483916689734125713528694542916378'
+
+print(valid_sudoku(test))
