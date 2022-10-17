@@ -1,16 +1,10 @@
-characters    = ('M',  'D', 'C', 'L', 'X', 'V', 'I') 
-numeric_value = (1000, 500, 100,  50,  10,  5,   1 ) 
+numeric = (1000, 900, 500, 400,  100,  90,  50,  40,   10,   9,    5,   4,    1 )
+chars   = ("M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I")
 
-def gimmenumber(n):
-    i = 0
-    roman = ''
+def roman(n):
+    return next(
+        (l + roman(n-c) for c, l in zip(numeric, chars) if c <= n),
+        ''
+    )
 
-    while n:
-        for x in range(n // numeric_value[i]):
-            roman += characters[i]
-            n -= numeric_value[i]
-        i += 1
-
-    return roman
-
-print(gimmenumber(12345))
+print(roman(1234))
