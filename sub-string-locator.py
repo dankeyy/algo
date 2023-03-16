@@ -19,7 +19,7 @@ def bad_dontuseit(s: str, k: int) -> dict: # k stands for the length of the desi
 
 def subfinder(s, k):
     dic = defaultdict(list)
-    values = (s[i: i + k] for i in range( len(s) - 1))
+    values = (s[i: i + k] for i in range(len(s) - k - 1))
  
     for i, v in enumerate(values): dic[v].append(i)
  
